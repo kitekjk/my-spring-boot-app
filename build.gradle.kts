@@ -23,6 +23,13 @@ subprojects {
             mavenBom("org.springframework.boot:spring-boot-dependencies:${property("springBootVersion")}")
             mavenBom("io.awspring.cloud:spring-cloud-aws-dependencies:${property("springCloudAwsVersion")}")
         }
+
+        dependencies {
+            dependency("org.mockito.kotlin:mockito-kotlin:${property("mockitoKotlinVersion")}")
+        }
+    }
+
+    tasks.withType<Test> {
+        useJUnitPlatform()
     }
 }
-

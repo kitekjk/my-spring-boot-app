@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  cassandra:
+    image: cassandra:4.0
+    container_name: cassandra
+    ports:
+      - "9042:9042"
+    environment:
+      CASSANDRA_START_RPC: "true"
+      CASSANDRA_RPC_ADDRESS: "0.0.0.0"
+
+  dynamodb-local:
+    image: amazon/dynamodb-local
+    container_name: dynamodb-local
+    ports:
+      - "8000:8000"
