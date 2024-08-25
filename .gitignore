@@ -26,6 +26,12 @@ cmake-build-*/
 # IntelliJ
 out/
 
+# Ignore the root-level build folder
+/build/
+
+# Ignore build folders inside all modules
+**/build/
+
 # JIRA plugin
 atlassian-ide-plugin.xml
 
@@ -63,4 +69,5 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
 

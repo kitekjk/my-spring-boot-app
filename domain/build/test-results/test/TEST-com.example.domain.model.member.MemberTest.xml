@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.example.domain.model.member.MemberTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2024-08-24T17:47:22" hostname="KAY-PC-3080" time="0.015">
-  <properties/>
-  <testcase name="should not change status if already active()" classname="com.example.domain.model.member.MemberTest" time="0.013"/>
-  <testcase name="should deactivate member successfully()" classname="com.example.domain.model.member.MemberTest" time="0.001"/>
-  <testcase name="should activate member successfully()" classname="com.example.domain.model.member.MemberTest" time="0.0"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

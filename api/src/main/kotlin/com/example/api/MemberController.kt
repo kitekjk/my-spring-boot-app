@@ -2,7 +2,7 @@ package com.example.api
 
 import com.example.application.member.MemberCommandService
 import com.example.application.member.MemberQueryService
-import com.example.domain.model.member.Member
+import com.example.application.member.dto.MemberDto
 import com.example.domain.model.member.MemberId
 import org.springframework.web.bind.annotation.*
 import reactor.core.publisher.Flux
@@ -17,12 +17,16 @@ class MemberController(
 ) {
 
     @PostMapping
-    fun createMember(@RequestBody request: CreateMemberRequest): Mono<Member> {
-        return memberCommandService.createMember(request.name, request.email)
+    fun createMember(@RequestBody request: CreateMemberRequest): Mono<MemberDto> {
+        println("createMember: $request")
+        val result = memberCommandService.createMember(request.name, request.email)
+        println("createMember:result: $result")
+        return result
     }
 
     @GetMapping("/{id}")
-    fun getMember(@PathVariable id: UUID): Mono<Member> {
+    fun getMember(@PathVariable id: UUID): Mono<MemberDto> {
+        println("getMember: $id")
         return memberQueryService.getMember(MemberId(id))
     }
 
@@ -30,7 +34,7 @@ class MemberController(
     fun updateMember(
         @PathVariable id: UUID,
         @RequestBody request: UpdateMemberRequest
-    ): Mono<Member> {
+    ): Mono<MemberDto> {
         return memberCommandService.updateMember(MemberId(id), request.name, request.email)
     }
 
@@ -40,17 +44,17 @@ class MemberController(
     }
 
     @PostMapping("/{id}/activate")
-    fun activateMember(@PathVariable id: UUID): Mono<Member> {
+    fun activateMember(@PathVariable id: UUID): Mono<MemberDto> {
         return memberCommandService.activateMember(MemberId(id))
     }
 
     @PostMapping("/{id}/deactivate")
-    fun deactivateMember(@PathVariable id: UUID): Mono<Member> {
+    fun deactivateMember(@PathVariable id: UUID): Mono<MemberDto> {
         return memberCommandService.deactivateMember(MemberId(id))
     }
 
     @GetMapping
-    fun getAllMembers(): Flux<Member> {
+    fun getAllMembers(): Flux<MemberDto> {
         return memberQueryService.getAllMembers()
     }
 }
